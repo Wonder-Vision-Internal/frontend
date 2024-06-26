@@ -1,0 +1,16 @@
+#module {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  
+  #module #collapseExample.collapse:not(.show) {
+    display: block;
+    height:9rem;
+    overflow: hidden;
+  }
+  
+  #module #collapseExample.collapsing {
+    height: 4rem;
+  }
+ 
