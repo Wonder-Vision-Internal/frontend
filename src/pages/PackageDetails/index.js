@@ -35,6 +35,9 @@ export default function PackageDetails() {
   const [data, setData] = useState();
   const [priceDetails, setPriceDetails] = useState([]);
   const location = useLocation();
+  const [bestThing, setBestThing] = useState([]);
+  const [bestPlace, setBestPlace] = useState([]);
+  const [packageDetails, setPackageDetails] = useState([]);
 
   const getContent = async () => {
     try {
@@ -62,6 +65,33 @@ export default function PackageDetails() {
     }
   };
 
+  const getBestThings = async () => {
+    try {
+      let res = await OpenApi.get("best-things-to-do/" + slug);
+      setBestThing(res.data.data)
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  const getBestPlace = async () => {
+    try {
+      let res = await OpenApi.get("best-places/" + slug);
+      setBestPlace(res.data.data)
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  const getPackageDetails = async () => {
+    try {
+      let res = await OpenApi.get("package-youtube-url/" + slug);
+      setPackageDetails(res.data.data)
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
   const fetchPriceDetails = async () => {
     const res = await OpenApi.get(`get-price-details/${slug}`);
     setPriceDetails(res.data.priceDetails);
@@ -69,6 +99,9 @@ export default function PackageDetails() {
 
   useEffect(() => {
     fetchPriceDetails();
+    getBestThings();
+    getBestPlace();
+    getPackageDetails();
   }, []);
 
   useEffect(() => {
@@ -374,13 +407,13 @@ export default function PackageDetails() {
       </section>
       <section>
         <div className="container pb-5">
-          <BestThing />
+          <BestThing bestThing={bestThing}/>
         </div>
         <div className="container pb-5">
-          <BestPlace />
+          <BestPlace bestPlace={bestPlace}/>
         </div>
         <div className="container pb-5">
-          <PackageDetail />
+          <PackageDetail data={packageDetails}/>
         </div>
       </section>
       {content && content?.postDetails?.gaq_details && (

@@ -7,7 +7,7 @@ import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-const BestThing = () => {
+const BestThing = ({ bestThing }) => {
   const matches = useMediaQuery("(max-width:600px)");
   const settings = {
     dots: false,
@@ -45,27 +45,13 @@ const BestThing = () => {
         BEST THINGS TO DO IN LADAKH
       </div>
       <Slider {...settings}>
-        <div>
-          <BestThingCard matches={matches}/>
-        </div>
-        <div>
-          <BestThingCard matches={matches}/>
-        </div>
-        <div>
-          <BestThingCard matches={matches}/>
-        </div>
-        <div>
-          <BestThingCard matches={matches}/>
-        </div>
-        <div>
-          <BestThingCard matches={matches}/>
-        </div>
-        <div>
-          <BestThingCard matches={matches}/>
-        </div>
-        <div>
-          <BestThingCard matches={matches}/>
-        </div>
+        {bestThing.map((ele) => {
+          return (
+            <div key={ele._id}>
+              <BestThingCard matches={matches} data={ele}/>
+            </div>
+          );
+        })}
       </Slider>
     </main>
   );

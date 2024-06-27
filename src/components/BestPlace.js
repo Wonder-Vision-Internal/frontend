@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
-const BestPlace = () => {
+const BestPlace = ({ bestPlace }) => {
   const matches = useMediaQuery("(max-width:600px)");
   const settings = {
     dots: false,
@@ -44,27 +44,13 @@ const BestPlace = () => {
         BEST PLACES TO VISIT IN LADAKH
       </div>
       <Slider {...settings}>
-        <div>
-          <BestPlaceCard />
-        </div>
-        <div>
-          <BestPlaceCard />
-        </div>
-        <div>
-          <BestPlaceCard />
-        </div>
-        <div>
-          <BestPlaceCard />
-        </div>
-        <div>
-          <BestPlaceCard />
-        </div>
-        <div>
-          <BestPlaceCard />
-        </div>
-        <div>
-          <BestPlaceCard />
-        </div>
+        {bestPlace.map((ele) => {
+          return (
+            <div key={ele._id}>
+              <BestPlaceCard data={ele}/>
+            </div>
+          );
+        })}
       </Slider>
     </main>
   );

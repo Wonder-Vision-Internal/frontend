@@ -3,10 +3,10 @@ import TestimonialCard from "./TestimonialCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-const TestimonailSlider = () => {
-  const matches = useMediaQuery('(max-width:600px)');
+const TestimonailSlider = ({ imgData }) => {
+  const matches = useMediaQuery("(max-width:600px)");
   const settings = {
     dots: true,
     infinite: true,
@@ -19,24 +19,13 @@ const TestimonailSlider = () => {
   return (
     <main style={{ paddingBottom: "50px" }}>
       <Slider {...settings}>
-        <div>
-          <TestimonialCard />
-        </div>
-        <div>
-          <TestimonialCard />
-        </div>
-        <div>
-          <TestimonialCard />
-        </div>
-        <div>
-          <TestimonialCard />
-        </div>
-        <div>
-          <TestimonialCard />
-        </div>
-        <div>
-          <TestimonialCard />
-        </div>
+        {imgData.map((ele) => {
+          return (
+            <div key={ele._id}>
+              <TestimonialCard data={ele} />
+            </div>
+          );
+        })}
       </Slider>
     </main>
   );

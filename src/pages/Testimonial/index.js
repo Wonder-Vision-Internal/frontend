@@ -16,11 +16,21 @@ export default function Testimonial() {
   //   }]);
   const [testimonial, setTestimonial] = useState();
   const [banners, setBanners] = useState();
+  const [imgData, setImgData] = useState([]);
 
   const getTestimonials = async () => {
     try {
       let datas = await OpenApi.get("get-testimonial");
       setTestimonial(datas.data);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  const getCarouselData = async () => {
+    try {
+      let res = await OpenApi.get("get-testimonials-crousel");
+      setImgData(res.data.data);
     } catch (error) {
       console.log({ error });
     }
@@ -39,6 +49,7 @@ export default function Testimonial() {
   useEffect(() => {
     getTestimonials();
     getBanners();
+    getCarouselData();
   }, []);
 
   useEffect(() => {
@@ -54,7 +65,7 @@ export default function Testimonial() {
             <h4 className="small-head">Find Our</h4>
             <span className="stylish-head mt-0">Testimonial</span>
           </div>
-          <TestimonailSlider />
+          <TestimonailSlider imgData={imgData}/>
           <div className="text-center">
             <h4 className="small-head">Find Our</h4>
             <span className="stylish-head mt-0">Testimonial</span>
