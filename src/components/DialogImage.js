@@ -3,8 +3,10 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
+import { useMediaQuery } from "@mui/material";
 
 const DialogImage = ({ open, setopen, imgsrc }) => {
+  const matches = useMediaQuery('(max-width:600px)');
   const handleClose = () => {
     setopen(false);
   };
@@ -18,8 +20,8 @@ const DialogImage = ({ open, setopen, imgsrc }) => {
         aria-describedby="alert-dialog-description"
         PaperProps={{
           style: {
-            width: '40vw',
-            height: '50vh',
+            width: matches ? "85vw" : '40vw',
+            height: matches ? "70vh" : '50vh',
             maxWidth: '90vw',
             maxHeight: '90vh',
           },
