@@ -3,8 +3,8 @@
   transition: opacity 0.5s ease-in-out;
 }
 .testimonial-card-main {
-  max-width: 600px;
-  background-color: #eef2ff;
+  width: 98%;
+  background-color: #f8f8f8;
   border-radius: 6px;
   padding: 20px;
   display: flex;
@@ -85,9 +85,13 @@
   overflow: hidden;
 }
 .bet-thing-card-b1 {
-  font-size: 50px;
-  color: red;
-  font-weight: 800 !important;
+  padding-bottom: 15px;
+}
+.bet-thing-card-b1 img {
+  /* max-width: 100%; */
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
 }
 .bet-thing-card-b2 {
   font-size: 14px;
@@ -117,7 +121,7 @@
 }
 .best-place-card-main {
   width: 98%;
-  background-color: #eef2ff;
+  background-color: #f8f8f8;
   padding: 15px;
   border-radius: 6px;
   display: flex;
