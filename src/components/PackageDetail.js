@@ -1,21 +1,28 @@
 import React from "react";
 
-const PackageDetail = ({ data }) => {
+const PackageDetail = ({ testimonial }) => {
   return (
     <main>
-      <div className="row">
-        {data.map((ele) => {
-          return (
-            <div
-              className="col-md-4 position-relative mb-4"
-              dangerouslySetInnerHTML={{
-                __html: `<iframe width="560" height="315" src=${ele.url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-              }}
-              key={ele._id}
-            ></div>
-          );
-        })}
-      </div>
+      <section className="section-padding client-part pb-0">
+        <div className="text-center">
+          <span className="stylish-head">Our Happy Clients</span>
+          <div className="owl-carousel owl-theme client-carousel">
+            {testimonial &&
+              testimonial.map((item, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <div
+                      className="resort-box"
+                      dangerouslySetInnerHTML={{
+                        __html: item.video_link,
+                      }}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

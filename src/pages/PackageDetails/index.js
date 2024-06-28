@@ -68,7 +68,7 @@ export default function PackageDetails() {
   const getBestThings = async () => {
     try {
       let res = await OpenApi.get("best-things-to-do/" + slug);
-      setBestThing(res.data.data)
+      setBestThing(res.data.data);
     } catch (error) {
       console.log({ error });
     }
@@ -77,31 +77,42 @@ export default function PackageDetails() {
   const getBestPlace = async () => {
     try {
       let res = await OpenApi.get("best-places/" + slug);
-      setBestPlace(res.data.data)
+      setBestPlace(res.data.data);
     } catch (error) {
       console.log({ error });
     }
   };
 
-  const getPackageDetails = async () => {
-    try {
-      let res = await OpenApi.get("package-youtube-url/" + slug);
-      setPackageDetails(res.data.data)
-    } catch (error) {
-      console.log({ error });
-    }
-  };
+  // const getPackageDetails = async () => {
+  //   try {
+  //     let res = await OpenApi.get("package-youtube-url/" + slug);
+  //     setPackageDetails(res.data.data)
+  //   } catch (error) {
+  //     console.log({ error });
+  //   }
+  // };
 
   const fetchPriceDetails = async () => {
     const res = await OpenApi.get(`get-price-details/${slug}`);
     setPriceDetails(res.data.priceDetails);
   };
 
+  const getTestimonials = async () => {
+    try {
+      let datas = await OpenApi.get("get-testimonial");
+      setPackageDetails(datas.data.testimonial);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
   useEffect(() => {
     fetchPriceDetails();
     getBestThings();
     getBestPlace();
-    getPackageDetails();
+    // getPackageDetails();
+    getTestimonials();
+    getTestimonials();
   }, []);
 
   useEffect(() => {
@@ -407,13 +418,13 @@ export default function PackageDetails() {
       </section>
       <section>
         <div className="container pb-5">
-          <BestThing bestThing={bestThing}/>
+          <BestThing bestThing={bestThing} />
         </div>
         <div className="container pb-5">
-          <BestPlace bestPlace={bestPlace}/>
+          <BestPlace bestPlace={bestPlace} />
         </div>
         <div className="container pb-5">
-          <PackageDetail data={packageDetails}/>
+          <PackageDetail testimonial={packageDetails} />
         </div>
       </section>
       {content && content?.postDetails?.gaq_details && (
@@ -563,6 +574,9 @@ export default function PackageDetails() {
           name={Common.ucWord(content.postDetails.title)}
         />
       )}
+      <div className="container pb-5">
+        <PackageDetail testimonial={packageDetails} />
+      </div>
       {content && content.postDetails.contactFormBanner && (
         <section
           className="bg-home-stay"
