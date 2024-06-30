@@ -1,5 +1,5 @@
 import React from "react";
-
+const url = process.env.REACT_APP_BASE_URL;
 const BestThingCard = ({ matches, data }) => {
   return (
     <section
@@ -7,7 +7,7 @@ const BestThingCard = ({ matches, data }) => {
       style={{ width: `${matches && "90%"}` }}
     >
       <div className="bet-thing-card-b1">
-        <img src={data.icon} />
+        <img src={`${url}${data.icon}`} />
       </div>
       <div className="bet-thing-card-b2">{data.title}</div>
     </section>

@@ -6,6 +6,7 @@ const BestPlaceCard = ({ data }) => {
   return (
     <section className="best-place-card-main">
       <div className="best-place-card-b1">
+        {console.log("++++++++++", `${url}${data.img}`)}
         <img src={`${url}/${data.img}`} />
       </div>
       <div className="best-place-card-b2">
