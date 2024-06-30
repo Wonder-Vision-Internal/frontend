@@ -21,21 +21,22 @@ const DialogImage = ({ open, setopen, imgsrc }) => {
         PaperProps={{
           style: {
             width: matches ? "85vw" : '40vw',
-            height: matches ? "70vh" : '70vh',
             maxWidth: '90vw',
             maxHeight: '90vh',
+            padding: '20px'
           },
         }}
       >
-        <DialogTitle id="alert-dialog-title" sx={{ alignSelf: 'end' }}>
+        <DialogTitle id="alert-dialog-title" sx={{ display: 'flex', justifyContent: 'flex-end' }}>
           <CloseIcon onClick={handleClose} style={{ cursor: 'pointer' }} />
         </DialogTitle>
-        <DialogContent style={{ textAlign: 'center' }}>
+        <DialogContent style={{ textAlign: 'center', padding: 0 }}>
           <img
             src={imgsrc}
             style={{
               maxWidth: '100%',
-              maxHeight: '80vh',
+              maxHeight: '90vh',
+              width: 'auto',
               height: 'auto',
             }}
             alt="Dialog"
