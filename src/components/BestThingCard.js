@@ -1,7 +1,6 @@
 import React from "react";
 
 const BestThingCard = ({ matches, data }) => {
-  console.log("dataaaaaaaaaaaaa", data)
   return (
     <section
       className="best-thing-card-main"

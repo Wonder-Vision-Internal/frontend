@@ -14,7 +14,7 @@ const PackageDetail = ({ testimonial }) => {
                     <div
                       className="resort-box"
                       dangerouslySetInnerHTML={{
-                        __html: item.video_link,
+                        __html: item.url,
                       }}
                     />
                   </div>

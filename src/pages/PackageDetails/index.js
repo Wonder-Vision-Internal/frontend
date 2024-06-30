@@ -83,36 +83,35 @@ export default function PackageDetails() {
     }
   };
 
-  // const getPackageDetails = async () => {
-  //   try {
-  //     let res = await OpenApi.get("package-youtube-url/" + slug);
-  //     setPackageDetails(res.data.data)
-  //   } catch (error) {
-  //     console.log({ error });
-  //   }
-  // };
+  const getPackageDetails = async () => {
+    try {
+      let res = await OpenApi.get("package-youtube-url/" + slug);
+      setPackageDetails(res.data.data)
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   const fetchPriceDetails = async () => {
     const res = await OpenApi.get(`get-price-details/${slug}`);
     setPriceDetails(res.data.priceDetails);
   };
 
-  const getTestimonials = async () => {
-    try {
-      let datas = await OpenApi.get("get-testimonial");
-      setPackageDetails(datas.data.testimonial);
-    } catch (error) {
-      console.log({ error });
-    }
-  };
+  // const getTestimonials = async () => {
+  //   try {
+  //     let datas = await OpenApi.get("get-testimonial");
+  //     setPackageDetails(datas.data.testimonial);
+  //   } catch (error) {
+  //     console.log({ error });
+  //   }
+  // };
 
   useEffect(() => {
     fetchPriceDetails();
     getBestThings();
     getBestPlace();
-    // getPackageDetails();
-    getTestimonials();
-    getTestimonials();
+    getPackageDetails();
+    // getTestimonials();
   }, []);
 
   useEffect(() => {
