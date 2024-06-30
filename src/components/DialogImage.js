@@ -21,7 +21,7 @@ const DialogImage = ({ open, setopen, imgsrc }) => {
         PaperProps={{
           style: {
             width: matches ? "85vw" : '40vw',
-            height: matches ? "70vh" : '50vh',
+            height: matches ? "70vh" : '70vh',
             maxWidth: '90vw',
             maxHeight: '90vh',
           },
