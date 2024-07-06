@@ -38,6 +38,7 @@ export default function PackageDetails() {
   const [bestThing, setBestThing] = useState([]);
   const [bestPlace, setBestPlace] = useState([]);
   const [packageDetails, setPackageDetails] = useState([]);
+  const [packageDetails2, setPackageDetails2] = useState([]);
 
   const getContent = async () => {
     try {
@@ -85,8 +86,17 @@ export default function PackageDetails() {
 
   const getPackageDetails = async () => {
     try {
-      let res = await OpenApi.get("package-youtube-url/" + slug);
+      let res = await OpenApi.get("package-youtube-url/tour-guidance/" + slug);
       setPackageDetails(res.data.data)
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  const getPackageDetails2 = async () => {
+    try {
+      let res = await OpenApi.get("package-youtube-url/our-happy-client/" + slug);
+      setPackageDetails2(res.data.data)
     } catch (error) {
       console.log({ error });
     }
@@ -111,6 +121,7 @@ export default function PackageDetails() {
     getBestThings();
     getBestPlace();
     getPackageDetails();
+    getPackageDetails2();
     // getTestimonials();
   }, []);
 
@@ -574,7 +585,7 @@ export default function PackageDetails() {
         />
       )}
       <div className="container pb-5">
-        <PackageDetail testimonial={packageDetails} />
+        <PackageDetail testimonial={packageDetails2} />
       </div>
       {content && content.postDetails.contactFormBanner && (
         <section

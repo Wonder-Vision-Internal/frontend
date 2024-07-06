@@ -7,14 +7,19 @@ const TestimonialCard = ({ data }) => {
     <section className="testimonial-card-main">
       <div className="testimonial-card-content">
         <div className="testimonial-card-main-block1">
-        
-          <img src={data.userImg} alt={data.userName} />
+          <img
+            src={`${process.env.REACT_APP_BASE_URL}${data.userImg}`}
+            alt={data.userName}
+          />
         </div>
         <div className="testimonial-card-main-block2">{data.userName}</div>
         <div className="testimonial-card-main-block3">{data.title}</div>
       </div>
       <div className="img-main-block2" onClick={() => setopen(true)}>
-        <img src={data.screenImg} alt={data.userName} />
+        <img
+          src={`${process.env.REACT_APP_BASE_URL}${data.screenImg}`}
+          alt={data.userName}
+        />
       </div>
       <div className="img-icon">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyi_CVTmoL1ITHFxQkfLwvj93hcsgA1Olkhg&s" />
