@@ -434,7 +434,7 @@ export default function PackageDetails() {
           <BestPlace bestPlace={bestPlace} />
         </div>
         <div className="container pb-5">
-          <PackageDetail testimonial={packageDetails} />
+          <PackageDetail testimonial={packageDetails} title={"Tour Gudiance"} />
         </div>
       </section>
       {content && content?.postDetails?.gaq_details && (
@@ -585,7 +585,7 @@ export default function PackageDetails() {
         />
       )}
       <div className="container pb-5">
-        <PackageDetail testimonial={packageDetails2} />
+        <PackageDetail testimonial={packageDetails2} title={"Our Happy Clients"}/>
       </div>
       {content && content.postDetails.contactFormBanner && (
         <section
